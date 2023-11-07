@@ -13,7 +13,7 @@ import { Album } from "./music/album/entities/album.entity";
   imports: [ArtistsModule, MusicModule, TypeOrmModule.forRoot({
     type: 'mysql',
     host: 'localhost',
-    port: 3306,
+    port: 8082,
     username: 'loona',
     password: 'loona12345',
     database: 'loona',
