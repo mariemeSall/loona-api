@@ -31,6 +31,7 @@ export class AlbumService {
       id:undefined,
       title: createAlbumDto.title,
       date: new Date(createAlbumDto.date),
+      picture: createAlbumDto.picture,
       songs:[],
       member,
       subunit
@@ -40,11 +41,11 @@ export class AlbumService {
   }
 
   async findAll() {
-    return await this.albumRepository.find({relations:{songs:true}});
+    return await this.albumRepository.find();
   }
 
   async findOne(id: number) {
-    return await this.albumRepository.findOne({relations:{songs:true},where:{id}});
+    return await this.albumRepository.findOne({relations:["songs", "songs.featuring", "member", "subunit"],where:{id}});
   }
 
   update(id: number, updateAlbumDto: UpdateAlbumDto) {

@@ -35,7 +35,7 @@ export class SongService {
   }
 
   async findAll() {
-    return await this.songRepository.find({relations:{featuring:true}});
+    return await this.songRepository.find();
   }
 
   async findOne(id: number) {

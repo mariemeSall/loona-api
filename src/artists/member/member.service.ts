@@ -177,6 +177,7 @@ export class MemberService {
           await this.memberRepository.save(member)
 
       }
+      return "Members initialized"
   }
 
   async findAll(): Promise<Member[]> {

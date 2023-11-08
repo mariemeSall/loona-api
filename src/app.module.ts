@@ -14,7 +14,7 @@ import { Album } from "./music/album/entities/album.entity";
     type: 'mysql',
     host: 'bdd',
     port: 3306,
-    username: 'loona',
+    username: 'root',
     password: 'loona12345',
     database: 'loona',
     entities: [Member, Subunit, Song, Album],

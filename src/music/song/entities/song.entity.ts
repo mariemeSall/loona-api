@@ -14,7 +14,7 @@ export class Song {
     album: Album;
 
     @Column()
-    duration : number;
+    audio : string;
 
     @ManyToMany(()=> Member)
     @JoinTable({

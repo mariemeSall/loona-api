@@ -73,10 +73,11 @@ export class SubunitService {
       await this.subRepository.save(subUnit)
 
     }
+    return "SubUnits initialized"
   }
 
   findAll() {
-    return this.subRepository.find({relations : {members:true}});
+    return this.subRepository.find();
   }
 
   findOne(id: number): Promise<Subunit> {

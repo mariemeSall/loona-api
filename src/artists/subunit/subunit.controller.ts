@@ -1,7 +1,9 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseInterceptors } from '@nestjs/common';
 import { SubunitService } from './subunit.service';
+import { TransformInterceptor } from "../../transform.interceptor";
 
 @Controller('subunit')
+@UseInterceptors(TransformInterceptor)
 export class SubunitController {
   constructor(private readonly subunitService: SubunitService) {}
   @Post()

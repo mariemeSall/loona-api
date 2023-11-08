@@ -1,9 +1,11 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseInterceptors } from '@nestjs/common';
 import { SongService } from './song.service';
 import { CreateSongDto } from './dto/create-song.dto';
 import { UpdateSongDto } from './dto/update-song.dto';
+import { TransformInterceptor } from "../../transform.interceptor";
 
 @Controller('song')
+@UseInterceptors(TransformInterceptor)
 export class SongController {
   constructor(private readonly songService: SongService) {}
 

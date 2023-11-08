@@ -14,6 +14,9 @@ export class Album {
     @Column({type:"date"})
     date: Date ;
 
+    @Column()
+    picture: string;
+
     @ManyToOne(()=> Subunit)
     subunit: Subunit ;
 
