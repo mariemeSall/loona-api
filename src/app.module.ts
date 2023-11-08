@@ -12,8 +12,8 @@ import { Album } from "./music/album/entities/album.entity";
 @Module({
   imports: [ArtistsModule, MusicModule, TypeOrmModule.forRoot({
     type: 'mysql',
-    host: 'localhost',
-    port: 8082,
+    host: 'bdd',
+    port: 3306,
     username: 'loona',
     password: 'loona12345',
     database: 'loona',
