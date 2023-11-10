@@ -13,28 +13,8 @@ export class SongService {
   constructor(
       @InjectRepository(Song)
       private songRepository : Repository<Song>,
-      private albumService: AlbumService,
-      private featService: MemberService,
   ){}
-    async create(createSongDto: CreateSongDto) {
-      let album : Album = await this.albumService.findOne(createSongDto.album);
-      let songDTO: Song = {
-        id:undefined,
-        ...createSongDto,
-        album,
-        featuring:[],
-      };
-      if(createSongDto.featuring){
-        for (const feat of createSongDto.featuring) {
-          let feat_complet = await this.featService.findOne(feat)
-          songDTO.featuring.push(feat_complet)
-        }
-      }
-
-      return await this.songRepository.save(songDTO);
-  }
-
-  async findAll() {
+     async findAll() {
     return await this.songRepository.find();
   }
 
@@ -42,11 +22,4 @@ export class SongService {
     return await this.songRepository.findOne({relations:{featuring:true}, where:{id}});
   }
 
-  update(id: number, updateSongDto: UpdateSongDto) {
-    return `This action updates a #${id} song`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} song`;
-  }
 }

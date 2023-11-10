@@ -9,12 +9,7 @@ import { TransformInterceptor } from "../../transform.interceptor";
 export class SongController {
   constructor(private readonly songService: SongService) {}
 
-  @Post()
-  create(@Body() createSongDto: CreateSongDto) {
-    return this.songService.create(createSongDto);
-  }
-
-  @Get()
+   @Get()
   findAll() {
     return this.songService.findAll();
   }
@@ -24,13 +19,4 @@ export class SongController {
     return this.songService.findOne(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateSongDto: UpdateSongDto) {
-    return this.songService.update(+id, updateSongDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.songService.remove(+id);
-  }
 }

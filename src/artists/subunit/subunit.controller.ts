@@ -6,11 +6,7 @@ import { TransformInterceptor } from "../../transform.interceptor";
 @UseInterceptors(TransformInterceptor)
 export class SubunitController {
   constructor(private readonly subunitService: SubunitService) {}
-  @Post()
-  create(){
-    return this.subunitService.create();
-  }
-  @Get()
+   @Get()
   findAll() {
     return this.subunitService.findAll();
   }

@@ -7,11 +7,7 @@ import { TransformInterceptor } from "../../transform.interceptor";
 export class MemberController {
   constructor(private readonly memberService: MemberService) {}
 
-  @Post()
-  create(){
-      return this.memberService.create();
-  }
-  @Get()
+   @Get()
   findAll() {
     return this.memberService.findAll();
   }

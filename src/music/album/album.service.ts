@@ -14,31 +14,9 @@ export class AlbumService {
   constructor(
       @InjectRepository(Album)
       private albumRepository: Repository<Album>,
-      private unitService: SubunitService,
-      private memberService: MemberService,
   ) {
   }
-  async create(createAlbumDto: CreateAlbumDto) {
-    let subunit: Subunit=null;
-    let member: Member= null;
-    if (!createAlbumDto.solo) {
-      subunit = await this.unitService.findOne(createAlbumDto.artist)
-    } else {
-      member = await this.memberService.findOne(createAlbumDto.artist)
-    }
 
-    let albumDTO: Album = {
-      id:undefined,
-      title: createAlbumDto.title,
-      date: new Date(createAlbumDto.date),
-      picture: createAlbumDto.picture,
-      songs:[],
-      member,
-      subunit
-    }
-
-    return await this.albumRepository.save(albumDTO);
-  }
 
   async findAll() {
     return await this.albumRepository.find({order: {date:"ASC"}});
@@ -48,11 +26,4 @@ export class AlbumService {
     return await this.albumRepository.findOne({relations:["songs", "songs.featuring", "member", "subunit"],where:{id}});
   }
 
-  update(id: number, updateAlbumDto: UpdateAlbumDto) {
-    return `This action updates a #${id} album`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} album`;
-  }
 }

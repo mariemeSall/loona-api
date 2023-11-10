@@ -9,12 +9,6 @@ import { TransformInterceptor } from "../../transform.interceptor";
 export class AlbumController {
   constructor(private readonly albumService: AlbumService) {}
 
-  @Post()
-  create(@Body() createAlbumDto: CreateAlbumDto) {
-    console.log("POST")
-    return this.albumService.create(createAlbumDto);
-  }
-
   @Get()
   findAll() {
     return this.albumService.findAll();
@@ -25,13 +19,4 @@ export class AlbumController {
     return this.albumService.findOne(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateAlbumDto: UpdateAlbumDto) {
-    return this.albumService.update(+id, updateAlbumDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.albumService.remove(+id);
-  }
 }
