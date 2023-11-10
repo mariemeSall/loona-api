@@ -77,7 +77,7 @@ export class SubunitService {
   }
 
   findAll() {
-    return this.subRepository.find();
+    return this.subRepository.find({order: { debut:"ASC"}});
   }
 
   findOne(id: number): Promise<Subunit> {

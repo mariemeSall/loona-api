@@ -41,7 +41,7 @@ export class AlbumService {
   }
 
   async findAll() {
-    return await this.albumRepository.find();
+    return await this.albumRepository.find({order: {date:"ASC"}});
   }
 
   async findOne(id: number) {

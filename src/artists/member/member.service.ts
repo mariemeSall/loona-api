@@ -181,7 +181,7 @@ export class MemberService {
   }
 
   async findAll(): Promise<Member[]> {
-    return await this.memberRepository.find();
+    return await this.memberRepository.find({order:{number:"ASC"}});
   }
 
   async findOne(number: number): Promise<Member> {
