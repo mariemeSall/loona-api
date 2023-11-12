@@ -26,4 +26,17 @@ export class AlbumService {
     return await this.albumRepository.findOne({relations:["songs", "songs.featuring", "member", "subunit"],where:{id}});
   }
 
+  async findByMember(id: number) {
+    return await this.albumRepository.find({order:{date:"asc"}, where:{
+      member: {id},
+      }})
+
+  }
+
+  async findBySubUnit(id: number) {
+    return await this.albumRepository.find({order:{date:"asc"}, where:{
+        subunit: {id},
+      }})
+  }
+
 }

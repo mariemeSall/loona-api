@@ -19,4 +19,13 @@ export class AlbumController {
     return this.albumService.findOne(+id);
   }
 
+  @Get('/member/:id')
+  findMember(@Param('id') id: string){
+    return this.albumService.findByMember(+id);
+  }
+  @Get('/subunit/:id')
+  findSubUnit(@Param('id') id: string){
+    return this.albumService.findBySubUnit(+id);
+  }
+
 }
